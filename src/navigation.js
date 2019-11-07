@@ -16,7 +16,7 @@ import {createStackNavigator} from 'react-navigation-stack';
 import {createDrawerNavigator} from 'react-navigation-drawer';
 import {createMaterialTopTabNavigator} from 'react-navigation-tabs';
 import Chat from '../src/chat'
-import Status from '../src/status'
+import Status from './hiasanbuatkontak'
 import Riwayat from '../src/riwayat'
 import Setting from '../src/setting';
 import Akun from './profil';
@@ -32,6 +32,8 @@ import Edit from './editprofile'
 import User from './Akun'
 import Simpananpesan from './pesan yang disimpan'
 import Info from './info'
+import Screenchat from './screenchat'
+import Editdata from './percobaan'
 
 
 
@@ -202,6 +204,18 @@ const First_2_Tabs = createStackNavigator ({
   },
   Info: {
     screen: Info,
+    navigationOptions:()=>({
+      header:null
+    })
+  },
+  Screenchat: {
+    screen: Screenchat,
+    navigationOptions:()=>({
+      header:null
+    })
+  },
+  Editdata: {
+    screen: Editdata,
     navigationOptions:()=>({
       header:null
     })

@@ -1,5 +1,5 @@
 import React from 'react'
-import {View,Text,Image,TouchableOpacity,Button,TextInput,StyleSheet,AsyncStorage} from 'react-native'
+import {View,Text,Image,TouchableOpacity,Button,TextInput,StyleSheet,AsyncStorage,FlatList,ActivityIndicator,StatusBar} from 'react-native'
 import ActionButton from 'react-native-action-button';
 import call from 'react-native-phone-call'
 // import Home from '../React-Native-Redux-master/test/Route/index'
@@ -7,7 +7,7 @@ import call from 'react-native-phone-call'
 // import {createStore, applyMiddleware} from 'redux'
 // import reducer from '../React-Native-Redux-master/test/Redux/reducer'
 // import thunk from 'redux-thunk'
-
+import axios from 'axios'
 
 
 export default class Chat extends React.Component{
@@ -18,62 +18,96 @@ export default class Chat extends React.Component{
       coba: "",
       cabo:"",
       username: '',
+      isLoading:false,
+      data:'',
+      id:""
     };
   }
-  saveData(){  
-    let name = "rifin";  
-    AsyncStorage.setItem('user',name);  
-  }  
-  displayData = async ()=>{  
-    try{  
-      let user = await AsyncStorage.getItem('user')
-      alert(user);  
-      this.props.navigation.navigate('Riwayat');  
-    }  
-    catch(error){  
-      alert(error)  
-    }  
-  }  
+  
+
 
 
   call = () => {
     //handler to make a call
     const args = {
-      number: '0000000000',
+      number: '+62',
       prompt: false,
     };
     call(args).catch(console.error);
   };
 
 
+  // componentDidMount() {
+    
+  //   axios.get(`https://aqueous-hollows-28311.herokuapp.com/tampil/45` )
+  //     .then(res => {
+  //       console.log(res.data);
+  //       const data = res.data;
+  //       this.setState({data});
+  //     })
+  //     .catch(err => console.log(err))
+  // }
+
+
+
+
+
 
   out =() =>
   {
       AsyncStorage.removeItem('access_token')
+      AsyncStorage.removeItem('id')
+      AsyncStorage.removeItem('name')
+      AsyncStorage.removeItem('email')
+      AsyncStorage.removeItem('telp')
+      AsyncStorage.removeItem('avatar')
       this.props.navigation.navigate('Login')
     }
 
 
-
   
-     toogle= () => {
-       this.setState({drawer : true})
-     }
- render(){
-  const { navigate } = this.props.navigation;
+  
+  //   renderItems = ({ item, index }) => {
+  //     const {name,email,avatar}=item
+  //     return(
+  //      <View style={{flex:1}}>
+       
+
+  //    <TouchableOpacity onPress={() => this.props.navigation.navigate('Screenchat')}>
+          
+  //                    <View style={{alignItems:'center',paddingTop:5,paddingBottom:20}}> 
+  //                                <View style={{backgroundColor:'#fff',borderRadius:40,borderWidth:1,width:330,height:70,justifyContent:'center',elevation:10,borderColor:'#9b59b6',}}>
+                                 
+  //                                 <View style={{flexDirection:'row'}}>
+  //                                 <Image style={{height:50,width:50,marginLeft:20,borderRadius:25,borderWidth:1,borderColor:'#9b59b6'}} />
+  //                                  <Text style={{paddingLeft:30,paddingTop:10,color:'#000'}}>{name}</Text>
+                                
+  //                                  </View>
+                                  
+  //                                  </View>
+  //                     </View>
+  //     </TouchableOpacity>
+  //          </View>
+       
+  //     )
+  // }
+
+
+  render(){
+  
    return(
      <View style={{flex:1}}>
-       {/* <Provider store={createStore(reducer,{},applyMiddleware(thunk))}>
-        <Home/>
-      </Provider> */}
-      <View style={{flex:1}}>
-      <TouchableOpacity onPress ={this.saveData}>  
-          <Text>Click to save data</Text>  
-        </TouchableOpacity>    
-        <TouchableOpacity onPress ={this.displayData}>  
-          <Text>Click to display data</Text>  
-        </TouchableOpacity> 
-      </View>
+   
+      <View style={{ flex: 1, }}>
+          
+            <View>
+             
+            </View>
+            {/* <FlatList
+                   data={this.state.data}
+                   keyExtractor={item => item.toString()}
+                   renderItem={this.renderItems} /> */}
+        </View>
      
      
        <ActionButton buttonColor="rgba(231,76,60,1)">

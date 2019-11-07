@@ -1,6 +1,6 @@
 import React from 'react'
 import {} from 'react-native'
-import MyDrawerNavigator from './src/navigation'
+import App from './src/spalsh'
 // import { initApi } from './ChatSCreen/services/api';
 
 export default class Coba extends React.Component{
@@ -9,7 +9,7 @@ export default class Coba extends React.Component{
   // }
   render(){
     return(
-      <MyDrawerNavigator />
+      <App />
     )
   }
 }

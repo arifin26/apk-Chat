@@ -62,10 +62,13 @@ export default class User extends React.Component{
     Btn_TambahData: {
      
       justifyContent:'center',
-      borderRadius:5,
+      borderRadius:60,
       marginBottom:20,
       width: 200,
-      backgroundColor: '#633689'
+      backgroundColor: '#fff',
+      borderWidth:2,
+      borderColor:'#633689',
+      elevation:40
    
     },
     tengah:{
@@ -73,6 +76,6 @@ export default class User extends React.Component{
         paddingTop:70
     },
     text:{
-      color:'#fff'
+      color:'#000'
     }
  })

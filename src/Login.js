@@ -41,13 +41,13 @@ class Login extends React.Component {
   
   Login = (name, password) => {
     this.setState({modalVisible : true})
-    fetch('https://memoria.serveo.net/login', {
+    fetch('https://aqueous-hollows-28311.herokuapp.com/login', {
       method: 'POST',
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json'
       }, 
-      body: JSON.stringify({
+      params: JSON.stringify({
         name: name,
         password: password
       })
@@ -55,21 +55,19 @@ class Login extends React.Component {
       .then(response => response.json())
       .then(response => {
         if(response.access_token){
-          AsyncStorage.setItem('name',response.user.name)
-          AsyncStorage.setItem('email',response.user.email)
-          AsyncStorage.setItem('telp',response.user.telp) 
-          AsyncStorage.setItem('avatar',response.user.avatar)   
+          AsyncStorage.setItem('id',JSON.stringify(response.login.id))
+          AsyncStorage.setItem('name',response.login.name)
+          AsyncStorage.setItem('email',response.login.email)
+          AsyncStorage.setItem('telp',JSON.stringify(response.login.telp)) 
+          AsyncStorage.setItem('avatar',response.login.avatar)   
           AsyncStorage.setItem('access_token',response.access_token)
-          // AsyncStorage.setItem('name',response.user.name)
           
-            
-          this.props.navigation.navigate('First')
         }
-        else if(response.user.email){
-         console.log(response.user.email)
-        }
+        // else if(response.login.email){
+        //  console.log(response.login.email)
+        // }
      
-       
+        this.props.navigation.navigate('First')
         
         
         
@@ -86,7 +84,8 @@ class Login extends React.Component {
     return (
       
       
-      <ImageBackground source={require('../gambar/lawa.jpeg')} style={{height:'100%',width:'100%'}}>
+      <ImageBackground source={require('../gambar/2069453d-2577-4a7e-bf98-8260c23e2599.png')} style={{height:'100%',width:'100%',backgroundColor: 'rgba(0,0,0,0.5)',}}>
+
       <View style={{ flex: 1 }}>
       <ScrollView>
 
@@ -106,8 +105,8 @@ class Login extends React.Component {
         {/* <View style={Styles.ViewHeader}>
           <Text style={Styles.TextHeader}> LOGIN </Text>
         </View> */}
-        <View style={{justifyContent:'center',alignItems:'center',paddingTop:15}}>
-          <Image source={require('../gambar/deviantart.png')} style={{height:110,width:110}}/>
+        <View style={{justifyContent:'center',alignItems:'center',paddingTop:80}}>
+          <Image source={require('../gambar/a-transparent.png')} style={{height:110,width:110}}/>
         </View>
         <View style={Styles.ViewDisplay}>
           
@@ -150,7 +149,7 @@ class Login extends React.Component {
         
           
           
-          <Text style={{ fontSize: 14 }}>Belum punya akun ? </Text>
+          <Text style={{ fontSize: 14 }}>.</Text>
           
             <TouchableOpacity
             style={Styles.TouchableDisplay}
@@ -171,7 +170,7 @@ class Login extends React.Component {
       </ScrollView>
       </View>
       </ImageBackground>
-     
+   
     
     )
   }
@@ -198,7 +197,8 @@ const Styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     marginBottom: '15%',
-    marginTop:60
+    marginTop:60,
+   
     
   },
   TextDisplay: {
@@ -214,8 +214,9 @@ const Styles = StyleSheet.create({
       marginBottom: 7,
       height: 40,
       borderWidth: 1,
-      borderColor: '#075e54',
+      borderColor: '#633689',
       borderRadius: 50 ,
+      backgroundColor:'#fff'
      
       
   },

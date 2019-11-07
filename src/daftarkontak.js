@@ -10,7 +10,7 @@ export default class Daftarkontak extends React.Component {
     this.arrayholder = [];
   }
   componentDidMount() {
-    return fetch('https://jsonplaceholder.typicode.com/posts')
+    return fetch('https://aqueous-hollows-28311.herokuapp.com/chat/1')
       .then(response => response.json())
       .then(responseJson => {
         this.setState(

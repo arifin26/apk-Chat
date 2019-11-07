@@ -1,5 +1,5 @@
 import React from 'react'
-import { View , TextInput , Text , Button,Modal,ActivityIndicator,AsyncStorage,TouchableOpacity,StyleSheet,} from 'react-native'
+import { View , TextInput , Text ,Image, Button,Modal,ActivityIndicator,AsyncStorage,ImageBackground,TouchableOpacity,StyleSheet,} from 'react-native'
 
 
 class Register extends React.Component{
@@ -14,7 +14,7 @@ class Register extends React.Component{
     }
     register = (name, email, password,telp) => {
             this.setState({modalVisible:true})
-        fetch('https://memoria.serveo.net/register', {
+        fetch('https://aqueous-hollows-28311.herokuapp.com/register', {
           method: 'POST',
           headers: {
             Accept: 'application/json',
@@ -30,7 +30,7 @@ class Register extends React.Component{
           .then(response => response.json())
           .then(response => {
             if (response.access_token) {
-              alert(response.access_token)
+            
             } 
           
             AsyncStorage.setItem('access_token',response.access_token)
@@ -49,6 +49,7 @@ class Register extends React.Component{
     render(){
         let  {name,email,password,telp} = this.state
         return (
+            <ImageBackground source={require('../gambar/2069453d-2577-4a7e-bf98-8260c23e2599.png')} style={{height:'100%',width:'100%',backgroundColor: 'rgba(0,0,0,0.5)'}}>
             <View style={{flex:1}}>
                 <Modal 
                     animationType="slide"
@@ -61,8 +62,11 @@ class Register extends React.Component{
                     </View>
                 </Modal>
       
-                <View style={Styles.ViewHeader}>
+                {/* <View style={Styles.ViewHeader}>
                 <Text style={Styles.TextHeader}> REGISTER </Text>
+                </View> */}
+                <View style={{justifyContent:'center',alignItems:'center',paddingTop:30}}>
+                <Image source={require('../gambar/a-transparent.png')} style={{height:110,width:110}}/>
                 </View>
                 <View style={{paddingTop:50,justifyContent:"center",alignItems:"center"}}>
                 <TextInput
@@ -100,7 +104,7 @@ class Register extends React.Component{
 
                
                 </TouchableOpacity>
-                <Text>Sudah punya akun ? </Text>
+                <Text>. </Text>
                 <TouchableOpacity
                   onPress={()=> this.props.navigation.navigate('Login')}
                   style={Styles.TouchableDisplay}>
@@ -111,6 +115,7 @@ class Register extends React.Component{
                 </TouchableOpacity>
                 </View>
             </View>
+            </ImageBackground>
         )
     }
 }
@@ -153,7 +158,7 @@ const Styles=StyleSheet.create({
         borderWidth: 1,
         borderColor: '#075e54',
         borderRadius: 50 ,
-       
+        backgroundColor:'#fff'
         
     },
 })

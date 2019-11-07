@@ -11,6 +11,14 @@ export default class Info extends React.Component{
             Info
             </Text>
             </View>
+            <View style={style.text}>
+              <Text style={style.teks}>
+                made in :
+              </Text>
+              <Text style={style.teks}>
+                ARIFIN :D
+              </Text>
+            </View>
        </View>
      </View>
    )
@@ -24,5 +32,13 @@ export default class Info extends React.Component{
     justifyContent:'center',
     alignItems:'center',
     backgroundColor:'#633689',
-    elevation:20}
+    elevation:20},
+    text:{
+      alignItems:'center',
+      paddingTop:250
+    },
+    teks:{
+      color:'#633689',
+      fontSize:30
+    }
  })
